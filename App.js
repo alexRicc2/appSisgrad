@@ -1,31 +1,19 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
-import NavBar from './src/components/Navbar';
-import Info from './src/components/Info';
-import Opcoes from './src/components/Opcoes';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import Home from './src/pages/Home';
+import About from './src/pages/About';
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <NavBar />
-      <View style={{ padding: 3 }}>
-        <View>
-          <Text style={styles.importText}>Sisgrad - Sistema de Graduação</Text>
-        </View>
-        <Info />
-        <Opcoes />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="About" component={About} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: StatusBar.currentHeight,
-  },
-  importText: {
-    color: "#2196f3",
-    fontSize: 20,
-  },
-
-});
