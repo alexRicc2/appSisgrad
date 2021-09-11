@@ -6,13 +6,40 @@ import Home from './src/pages/Home';
 import About from './src/pages/About';
 
 const Drawer = createDrawerNavigator();
-
+const MyTheme = {
+  dark: false,
+  colors: {
+    background: 'rgb(242, 242, 242)',
+    card: 'rgb(255, 255, 255)',
+    text: 'rgb(255, 255, 255)',
+    border: 'rgb(199, 199, 204)',
+    notification: 'rgb(255, 69, 58)',
+  },
+};
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="About" component={About} />
+    <NavigationContainer theme={MyTheme}>
+      <Drawer.Navigator initialRouteName="Home"
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#fff',
+        },
+        drawerLabelStyle: {
+          color: '#2196f3',
+        },
+      }}>
+        <Drawer.Screen name="Home" component={Home} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="About" component={About} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
