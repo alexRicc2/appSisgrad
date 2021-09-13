@@ -11,12 +11,21 @@ export default function Opcao({children, texto}){
 }
 const style = StyleSheet.create({
   opcao: {
-    borderColor: '#2196f3',
-    borderWidth: 5,
-    width: '48%',
-    height: 100,
+    width: '46%',
+    height: 125,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 8
+    marginBottom: 20,
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    marginRight: '4%',
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 5,
+    },
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
+    elevation: 11,
   },
 })

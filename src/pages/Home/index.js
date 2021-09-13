@@ -10,12 +10,9 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
     <StatusBar barStyle="light-content" backgroundColor="#2196f3"/>
       <StatusBar/>
-      <View style={{ padding: 3 }}>
-        <View>
-          <Text style={styles.importText}>Sisgrad - Sistema de Graduação</Text>
-        </View>
-        <Info />
-        <Opcoes />
+      <View style={{ padding: 44 }}>
+        <Info/>
+        <Opcoes/>
       </View>
     </SafeAreaView>
     </>

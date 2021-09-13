@@ -3,8 +3,15 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/pages/Home';
-import About from './src/pages/About';
-
+import HistoricoEscolar from './src/pages/HistoricoEscolar';
+import FrequenciaNotas from './src/pages/FrequenciaNotas';
+import CalendarioEscolar from './src/pages/CalendarioEscolar';
+import Rematricula from './src/pages/Rematricula';
+import Mensagens from './src/pages/Mensagens';
+import DadosCurso from './src/pages/DadosCurso';
+import HorarioDeAulas from './src/pages/HorarioDeAulas';
+import Solicitacoes from './src/pages/Solicitacoes';
+import Intercambio from './src/pages/Intercambio';
 const Drawer = createDrawerNavigator();
 const MyTheme = {
   dark: false,
@@ -34,12 +41,61 @@ export default function App() {
           },
           headerTintColor: '#fff',
         }}/>
-        <Drawer.Screen name="About" component={About} options={{
+        <Drawer.Screen name="Dados do Curso" component={DadosCurso} options={{
           headerStyle: {
             backgroundColor: '#2196f3',
           },
           headerTintColor: '#fff',
         }}/>
+           <Drawer.Screen name="Horario De Aulas" component={HorarioDeAulas} options={{
+             headerStyle: {
+               backgroundColor: '#2196f3',
+             },
+             headerTintColor: '#fff',
+           }}/>
+         <Drawer.Screen name="Histórico Escolar" component={HistoricoEscolar} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="Frequencia e Notas" component={FrequenciaNotas} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="Calendario Escolar" component={CalendarioEscolar} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="Rematricula" component={Rematricula} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="Mensagens" component={Mensagens} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+         <Drawer.Screen name="Intercâmbio" component={Intercambio} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        <Drawer.Screen name="Solicitações" component={Solicitacoes} options={{
+          headerStyle: {
+            backgroundColor: '#2196f3',
+          },
+          headerTintColor: '#fff',
+        }}/>
+        
       </Drawer.Navigator>
     </NavigationContainer>
     );

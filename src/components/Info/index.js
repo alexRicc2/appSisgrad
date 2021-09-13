@@ -5,22 +5,23 @@ import { Entypo } from '@expo/vector-icons';
 export default function Info() {
   return (
     <>
-    <View style={{ alignItems: 'center' }}>
+    <View style={{ alignItems: 'center'}}>
       <Image style={style.icone} source={{
           uri: `https://github.com/alexRicc2.png`
         }} />
     </View>
-    <View style={{marginBottom: 10}}>
+    <View style={{alignItems: 'center'}}>
+    <View style={{marginBottom: '23%'}}>
     <View style={{ flexDirection: 'row' }}>
-        <Ionicons name="person" size={24} color="black" style={{marginRight: 3}}/>
-        <Text>Alex Ricardo Rodrigues Sant'Anna</Text>
+        <Ionicons name="person" size={18} color="black" style={{marginRight: 10}}/>
+        <Text style={style.texto}>Alex Ricardo Rodrigues Sant'Anna</Text>
       </View>
       <View style={{ flexDirection: 'row' }}>
-        <Entypo name="info-with-circle" size={24} color="black" style={{marginRight: 3}}/>
-        <Text>RA: 10000210</Text>
+        <Entypo name="info-with-circle" size={18} color="black" style={{marginRight: 10}}/>
+        <Text style={style.texto}>RA: 10000210</Text>
       </View>
-      <Text style={{ marginLeft: 27 }}>Graduando de Ciências da Computação</Text>
-      <Text style={{ marginLeft: 27 }}>Percentual de Presença: 78%</Text>
+      <Text style={style.texto}>Graduando de Ciências da Computação</Text>
+    </View>
     </View>
     </>
   )
@@ -31,6 +32,9 @@ const style = StyleSheet.create({
     height: 160,
     borderRadius: 80,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: '17%',
   },
+  texto: {
+    paddingVertical: 2
+  }
 })
