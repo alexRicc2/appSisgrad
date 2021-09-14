@@ -1,24 +1,24 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function Opcao({children, texto}){
+
   return (
-    <View style={style.opcao}>
+    <TouchableOpacity style={style.opcao} >
       {children}
       <Text>{texto}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 const style = StyleSheet.create({
   opcao: {
-    width: '46%',
+    width: '48%',
     height: 125,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
     backgroundColor: '#fff',
     borderRadius: 15,
-    marginRight: '4%',
     shadowColor: "#000",
     shadowOffset: {
 	    width: 0,

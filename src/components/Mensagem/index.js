@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity,View, Text, StyleSheet} from 'react-native'
 import { useState } from 'react';
+import { CINZA } from '../../estilos';
 
 export default function Mensagem({professor, mensagem, horario}){
   const [lido, setLido] = useState('green')
@@ -18,7 +19,7 @@ export default function Mensagem({professor, mensagem, horario}){
 
 const style = StyleSheet.create({
   container:{
-    backgroundColor: '#e5e5e5',
+    backgroundColor: CINZA,
     flexDirection: 'row',
     minHeight: 50,
     marginHorizontal: 20,
