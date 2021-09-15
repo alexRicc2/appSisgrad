@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function Opcao({children, texto}){
+export default function Opcao({children, texto, navigation}){
 
   return (
-    <TouchableOpacity style={style.opcao} >
+    <TouchableOpacity style={style.opcao} onPress={()=> navigation.navigate('teste')}>
       {children}
       <Text>{texto}</Text>
     </TouchableOpacity>

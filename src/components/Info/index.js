@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { COR_PRINCIPAL } from '../../estilos';
@@ -8,7 +8,7 @@ export default function Info() {
     <>
     <View style={{ alignItems: 'center'}}>
       <Image style={style.icone} source={{
-          uri: `https://github.com/alexRicc2.png`
+          uri: `https://github.com/gustavoguanabara.png`
         }} />
     </View>
     <View style={{alignItems: 'center'}}>
@@ -29,11 +29,11 @@ export default function Info() {
 }
 const style = StyleSheet.create({
   icone: {
-    width: 160,
-    height: 160,
-    borderRadius: 80,
+    width: 220,
+    height: 220,
+    borderRadius: 110,
     marginTop: 10,
-    marginBottom: '17%',
+    marginBottom: '15%',
   },
   texto: {
     paddingVertical: 2

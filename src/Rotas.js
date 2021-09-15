@@ -13,6 +13,9 @@ import HorarioDeAulas from './pages/HorarioDeAulas';
 import Solicitacoes from './pages/Solicitacoes';
 import Intercambio from './pages/Intercambio';
 import { COR_PRINCIPAL } from './estilos';
+import Configuracoes from './pages/Configuracoes';
+import MyStack from './Stack';
+
 const Drawer = createDrawerNavigator();
 const MyTheme = {
   dark: false,
@@ -27,7 +30,7 @@ const MyTheme = {
 export default function Rotas() {
   return (
     <NavigationContainer theme={MyTheme}>
-      <Drawer.Navigator initialRouteName="Home"
+      <Drawer.Navigator initialRouteName="Inicio"
       screenOptions={{
         drawerStyle: {
           backgroundColor: '#fff',
@@ -36,12 +39,13 @@ export default function Rotas() {
           color: COR_PRINCIPAL,
         },
       }}>
-        <Drawer.Screen name="Home" component={Home} options={{
+        <Drawer.Screen name="Inicio" component={MyStack} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
           },
           headerTintColor: '#fff',
         }}/>
+        
         <Drawer.Screen name="Dados do Curso" component={DadosCurso} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
@@ -96,7 +100,12 @@ export default function Rotas() {
           },
           headerTintColor: '#fff',
         }}/>
-        
+        <Drawer.Screen name="Configurações" component={Configuracoes} options={{
+          headerStyle: {
+            backgroundColor: COR_PRINCIPAL,
+          },
+          headerTintColor: '#fff',
+        }}/>
       </Drawer.Navigator>
     </NavigationContainer>
     );

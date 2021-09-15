@@ -4,21 +4,25 @@ import { StyleSheet, View } from 'react-native';
 import { FontAwesome5, FontAwesome, Ionicons, 
  MaterialIcons } from '@expo/vector-icons';
 import { COR_PRINCIPAL } from '../../estilos';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Opcoes() {
+const Stack = createStackNavigator();
+
+export default function Opcoes({navigation}) {
   return (
     <View style={style.opcoes}>
+  
 
-      <Opcao texto='Documentos'>
+      <Opcao texto='Documentos' navigation={navigation}>
       <Ionicons name="documents" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Notas">
+      <Opcao texto="Notas" navigation={navigation}>
       <FontAwesome name="graduation-cap" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Horário de aulas">
+      <Opcao texto="Horário de aulas" navigation={navigation}>
       <FontAwesome5 name="clock" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Rematricula">
+      <Opcao texto="Rematricula" navigation={navigation}>
       <MaterialIcons name="menu-book" size={48} color={COR_PRINCIPAL} />
       </Opcao>
     </View>
