@@ -15,6 +15,7 @@ import Intercambio from './pages/Intercambio';
 import { COR_PRINCIPAL } from './estilos';
 import Configuracoes from './pages/Configuracoes';
 import MyStack from './Stack';
+import MensagensStack from './MensagensStack';
 
 const Drawer = createDrawerNavigator();
 const MyTheme = {
@@ -82,7 +83,7 @@ export default function Rotas() {
           },
           headerTintColor: '#fff',
         }}/>
-        <Drawer.Screen name="Mensagens" component={Mensagens} options={{
+        <Drawer.Screen name="Mensagens" component={MensagensStack} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
           },

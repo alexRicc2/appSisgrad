@@ -13,16 +13,16 @@ export default function Opcoes({navigation}) {
     <View style={style.opcoes}>
   
 
-      <Opcao texto='Documentos' navigation={navigation}>
+      <Opcao texto='Documentos' navigation={navigation} destino='notas'>
       <Ionicons name="documents" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Notas" navigation={navigation}>
+      <Opcao texto="Notas" navigation={navigation} destino='notas'>
       <FontAwesome name="graduation-cap" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Horário de aulas" navigation={navigation}>
+      <Opcao texto="Horário de aulas" navigation={navigation} destino='horarioDeAulas'>
       <FontAwesome5 name="clock" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Rematricula" navigation={navigation}>
+      <Opcao texto="Rematricula" navigation={navigation} destino='Rematricula'>
       <MaterialIcons name="menu-book" size={48} color={COR_PRINCIPAL} />
       </Opcao>
     </View>

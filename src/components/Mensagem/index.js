@@ -3,10 +3,12 @@ import {TouchableOpacity,View, Text, StyleSheet} from 'react-native'
 import { useState } from 'react';
 import { CINZA } from '../../estilos';
 
-export default function Mensagem({professor, mensagem, horario}){
+export default function Mensagem({professor, mensagem, horario, navigation}){
   const [lido, setLido] = useState('green')
   return(
-    <TouchableOpacity style={style.container} onPress={() => setLido('gray')}>
+    <TouchableOpacity style={style.container} onPress={() => {
+      setLido('gray')
+      navigation.navigate('teste')}}>
       <View style={[style.status , {backgroundColor: lido}]}></View>
       <View style={style.mensagem}>
       <Text style={style.professor}>{professor}</Text>

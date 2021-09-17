@@ -2,8 +2,9 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './pages/Home';
-import DadosCurso from './pages/DadosCurso';
-import TestePaginaInicial from './pages/TestePaginaInicial';
+import Notas from './pages/Notas';
+import HorarioDeAulas from './pages/HorarioDeAulas';
+import Rematricula from './pages/Rematricula';
 
 const Stack = createStackNavigator();
 
@@ -17,13 +18,18 @@ export default function MyStack(){
           options={{headerShown: false}}
         />
         <Stack.Screen 
-          name='dadosCurso'
-          component={DadosCurso}
-          options={{headerShown: false}}
+          name='Rematricula'
+          component={Rematricula}
+          options={{headerShown: true}}
         />
         <Stack.Screen 
-          name='teste'
-          component={TestePaginaInicial}
+          name='notas'
+          component={Notas}
+          options={{headerShown: true}}
+        />
+        <Stack.Screen 
+          name='horarioDeAulas'
+          component={HorarioDeAulas}
           options={{headerShown: true}}
         />
       </Stack.Navigator>

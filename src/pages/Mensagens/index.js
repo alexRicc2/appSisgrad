@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, FlatList} from 'react-native'
+import {View, StyleSheet, FlatList, Button} from 'react-native'
 import Mensagem from '../../components/Mensagem';
 
 const mensagensArray = [
@@ -18,13 +18,13 @@ const mensagensArray = [
 
 ]
 
-export default function Mensagens(){
+export default function Mensagens({navigation}){
   return(
     <>
     <View style={style.container}>
     <FlatList
       data={mensagensArray}
-      renderItem={({item}) => <Mensagem {...item}/>}
+      renderItem={({item}) => <Mensagem {...item} navigation={navigation}/>}
       keyExtractor={({id}) => String(id)}
     />
     </View>
