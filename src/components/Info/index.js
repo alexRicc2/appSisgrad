@@ -8,7 +8,7 @@ export default function Info() {
     <>
     <View style={{ alignItems: 'center'}}>
       <Image style={style.icone} source={{
-          uri: `https://github.com/gustavoguanabara.png`
+          uri: `https://github.com/alexRicc2.png`
         }} />
     </View>
     <View style={{alignItems: 'center'}}>
