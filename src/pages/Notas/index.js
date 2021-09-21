@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, StyleSheet, ScrollView} from 'react-native';
 import { CINZA_CLARO } from '../../estilos';
 import { Table, Row, Rows } from 'react-native-table-component';
 
