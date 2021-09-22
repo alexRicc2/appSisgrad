@@ -1,8 +1,11 @@
 import React from 'react';
 import Rotas from './src/Rotas';
-import MyStack from './src/Stack';
+import { ThemeProvider } from 'styled-components/native';
+import { temaClaro, temaEscuro } from './src/temas';
 export default function App(){
   return(
+    <ThemeProvider theme={temaClaro}>
     <Rotas/>
+    </ThemeProvider>
   )
 }
