@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { color } from 'react-native-reanimated';
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import { COR_PRINCIPAL } from '../../estilos';
+import NavBar from '../../components/Navbar';
  
-export default function HorarioDeAulas(){
+export default function HorarioDeAulas({navigation}){
   
   const [tableHead, setTableHead] = useState(['', 'SEG', 'TER', 'QUA','QUI','SEX'])
   const [tableData, setTableData] = useState([
@@ -27,6 +28,7 @@ export default function HorarioDeAulas(){
   
   return(
     <>
+    <NavBar titulo='Horário de Aulas' navigation={navigation}/>
     <ScrollView style={styles.container}>
     <Text style={styles.aluno}>Aluno: 201000000 - Alex Ricardo Rodrigues Sant'Anna | CC2014 - Bacharelado em Ciência da Computação - Integral</Text>
         <Table borderStyle={{borderWidth: 1, borderColor:COR_PRINCIPAL}}>

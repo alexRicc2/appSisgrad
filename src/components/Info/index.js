@@ -3,6 +3,14 @@ import { View, StyleSheet, Text, Image, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { COR_PRINCIPAL } from '../../estilos';
+import styled from 'styled-components/native';
+
+const TextStyled = styled.Text`
+  color: ${({ theme }) => theme.text};
+  padding: 2px 0;
+`;
+
+
 export default function Info() {
   return (
     <>
@@ -15,13 +23,13 @@ export default function Info() {
     <View style={{marginBottom: '23%'}}>
     <View style={{ flexDirection: 'row' ,alignItems: 'center' }}>
         <Ionicons name="person" size={18} color={COR_PRINCIPAL} style={{marginRight: 10}}/>
-        <Text style={style.texto}>Alex Ricardo Rodrigues Sant'Anna</Text>
+        <TextStyled>Alex Ricardo Rodrigues Sant'Anna</TextStyled>
       </View>
       <View style={{ flexDirection: 'row' ,alignItems: 'center'}}>
         <Entypo name="info-with-circle" size={18} color={COR_PRINCIPAL} style={{marginRight: 10}}/>
-        <Text style={style.texto}>RA: 10000210</Text>
+        <TextStyled>RA: 10000210</TextStyled>
       </View>
-      <Text style={style.texto}>Graduando de Ciências da Computação</Text>
+      <TextStyled>Graduando de Ciências da Computação</TextStyled>
     </View>
     </View>
     </>

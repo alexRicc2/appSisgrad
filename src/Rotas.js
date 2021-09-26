@@ -7,47 +7,48 @@ import HistoricoEscolar from './pages/HistoricoEscolar';
 import FrequenciaNotas from './pages/FrequenciaNotas';
 import CalendarioEscolar from './pages/CalendarioEscolar';
 import Rematricula from './pages/Rematricula';
-import Mensagens from './pages/Mensagens';
 import DadosCurso from './pages/DadosCurso';
 import HorarioDeAulas from './pages/HorarioDeAulas';
 import Solicitacoes from './pages/Solicitacoes';
 import Intercambio from './pages/Intercambio';
-import { COR_PRINCIPAL } from './estilos';
+import { COR_PRINCIPAL, COR_PRINCIPAL_ESCURA } from './estilos';
 import Configuracoes from './pages/Configuracoes';
-import MyStack from './Stack';
+import Notas from './pages/Notas';
 import MensagensStack from './MensagensStack';
 
 const Drawer = createDrawerNavigator();
 const MyTheme = {
-  dark: false,
   colors: {
-    background: 'rgb(242, 242, 242)',
+    background: COR_PRINCIPAL_ESCURA,
     card: 'rgb(255, 255, 255)',
     text: 'rgb(255, 255, 255)',
     border: 'rgb(199, 199, 204)',
     notification: 'rgb(255, 69, 58)',
   },
 };
-export default function Rotas() {
+export default function Rotas({toggleTema, tema}) {
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer >
       <Drawer.Navigator initialRouteName="Inicio"
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: tema? 'white': COR_PRINCIPAL_ESCURA
         },
         drawerLabelStyle: {
-          color: COR_PRINCIPAL,
+          color: tema? COR_PRINCIPAL: 'white',
         },
+        headerShown: false 
       }}>
-        <Drawer.Screen name="Inicio" component={MyStack} options={{
+       
+        <Drawer.Screen name="Inicio" component={Home} tema={tema}/>
+        
+        <Drawer.Screen name="Dados do Curso" component={DadosCurso} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
           },
           headerTintColor: '#fff',
         }}/>
-        
-        <Drawer.Screen name="Dados do Curso" component={DadosCurso} options={{
+        <Drawer.Screen name="Notas" component={Notas} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
           },
@@ -82,12 +83,14 @@ export default function Rotas() {
             backgroundColor: COR_PRINCIPAL,
           },
           headerTintColor: '#fff',
+          
         }}/>
         <Drawer.Screen name="Mensagens" component={MensagensStack} options={{
           headerStyle: {
             backgroundColor: COR_PRINCIPAL,
           },
           headerTintColor: '#fff',
+          headerShown: true
         }}/>
          <Drawer.Screen name="Intercâmbio" component={Intercambio} options={{
           headerStyle: {
@@ -101,12 +104,10 @@ export default function Rotas() {
           },
           headerTintColor: '#fff',
         }}/>
-        <Drawer.Screen name="Configurações" component={Configuracoes} options={{
-          headerStyle: {
-            backgroundColor: COR_PRINCIPAL,
-          },
-          headerTintColor: '#fff',
-        }}/>
+        <Drawer.Screen name="Configurações" component={Configuracoes} 
+        initialParams={{ itemId: 42 , toggle: toggleTema}}
+        >
+        </Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
     );

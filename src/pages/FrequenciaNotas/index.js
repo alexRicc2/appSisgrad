@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Text, StyleSheet, ScrollView} from 'react-native';
 import { CINZA_CLARO, COR_PRINCIPAL } from '../../estilos';
 import { Table, Row, Rows } from 'react-native-table-component';
-
-export default function FrequenciaNotas(){
+import NavBar from '../../components/Navbar';
+export default function FrequenciaNotas({navigation}){
 
   const [tableHead, setTableHead] = useState(['Matéria', 'Nota', 'Frequência', 'Aulas Dadas'])
   const [tableData, setTableData] = useState([
@@ -17,6 +17,8 @@ export default function FrequenciaNotas(){
     ['Lab ATP', '-' , '-', '0/30'],
   ])
   return(
+    <>
+    <NavBar titulo='Frequências e Notas' navigation={navigation}/>
     <ScrollView style={styles.container}>
       <Text style={style.nome}>Alex Ricardo Rodrigues Sant'Anna | CC2014 - Bacharelado em Ciência da Computação - Integral</Text>
       <Text style={style.periodo}>2º Semestre/2021</Text>
@@ -26,6 +28,7 @@ export default function FrequenciaNotas(){
         </Table> 
         
     </ScrollView>
+    </>
   )
 }
 

@@ -2,10 +2,12 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native'
 import {Calendar} from 'react-native-calendars';
 import { COR_PRINCIPAL } from '../../estilos';
-
-export default function CalendarioEscolar(){
+import NavBar from '../../components/Navbar';
+export default function CalendarioEscolar({navigation}){
   const diaLetivo = "#a7e0a3"
   return(
+    <>
+    <NavBar titulo='Calendario Escolar' navigation={navigation}/>
     <View>
     <Calendar
         markingType={'period'}
@@ -46,6 +48,7 @@ export default function CalendarioEscolar(){
       <Text>Recesso</Text>
     </View>
     </View>
+      </>
   )
 }
 const style = StyleSheet.create({

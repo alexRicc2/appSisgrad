@@ -2,9 +2,12 @@ import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native'
 import TabelaDados from '../../components/TabelaDados';
 import { TABELA_DISCIPLINAS_ARRAY } from '../../Dados/disciplinas';
+import NavBar from '../../components/Navbar';
 
-export default function DadosCurso(){
+export default function DadosCurso({navigation}){
   return(
+    <>
+    <NavBar titulo='Dados do Curso' navigation={navigation}/>
     <View style={style.container}>
 
     {/* <Text style={style.title}>Bacharelado em Ciências da computação</Text> */}
@@ -17,7 +20,7 @@ export default function DadosCurso(){
     />
 
     </View>
-    
+    </>
   )
 }
 

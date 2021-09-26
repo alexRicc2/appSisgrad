@@ -5,21 +5,23 @@ import { FontAwesome5, FontAwesome, Ionicons,
  MaterialIcons } from '@expo/vector-icons';
 import { COR_PRINCIPAL } from '../../estilos';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ThemeProvider } from 'styled-components/native';
 
 const Stack = createStackNavigator();
 
 export default function Opcoes({navigation}) {
+  console.log()
   return (
     <View style={style.opcoes}>
   
 
-      <Opcao texto='Documentos' navigation={navigation} destino='notas'>
+      <Opcao texto='Documentos' navigation={navigation} destino='Solicitações'>
       <Ionicons name="documents" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Notas" navigation={navigation} destino='notas'>
+      <Opcao texto="Notas" navigation={navigation} destino='Notas'>
       <FontAwesome name="graduation-cap" size={48} color={COR_PRINCIPAL} />
       </Opcao>
-      <Opcao texto="Horário de aulas" navigation={navigation} destino='horarioDeAulas'>
+      <Opcao texto="Horário de aulas" navigation={navigation} destino='Horario De Aulas'>
       <FontAwesome5 name="clock" size={48} color={COR_PRINCIPAL} />
       </Opcao>
       <Opcao texto="Rematricula" navigation={navigation} destino='Rematricula'>

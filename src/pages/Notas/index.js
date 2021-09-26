@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Text, StyleSheet, ScrollView} from 'react-native';
 import { CINZA_CLARO } from '../../estilos';
 import { Table, Row, Rows } from 'react-native-table-component';
+import NavBar from '../../components/Navbar';
 
-export default function Notas(){
+export default function Notas({navigation}){
 
   const [tableHead, setTableHead] = useState(['Matéria', 'Nota'])
   const [tableData, setTableData] = useState([
@@ -19,6 +20,8 @@ export default function Notas(){
   ])
 
   return(
+    <>
+    <NavBar titulo='Notas' navigation={navigation}/>
     <ScrollView style={styles.container}>
       <Text style={style.periodo}>1 série - 1 periodo</Text>
         <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
@@ -41,6 +44,7 @@ export default function Notas(){
           <Rows data={tableData} textStyle={styles.text}/>
         </Table>
     </ScrollView>
+  </>
   )
 }
 

@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Text, StyleSheet, ScrollView} from 'react-native';
 import { CINZA_CLARO } from '../../estilos';
 import { Table, Row, Rows } from 'react-native-table-component';
+import NavBar from '../../components/Navbar';
 
-export default function HistoricoEscolar(){
+export default function HistoricoEscolar({navigation}){
 
   const [tableHead, setTableHead] = useState(['Matéria', 'Nota', 'Presença', 'Conceito'])
   const [tableData, setTableData] = useState([
@@ -22,6 +23,8 @@ export default function HistoricoEscolar(){
   const [tableDataGeral, setTableDataGeral] = useState([['8.575', '98%']])
 
   return(
+    <>
+    <NavBar titulo='Histórico Escolas' navigation={navigation}/>
     <ScrollView style={styles.container}>
       <Text style={style.periodo}>1 série - 1 periodo</Text>
         <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
@@ -50,6 +53,7 @@ export default function HistoricoEscolar(){
         </Table>
         
     </ScrollView>
+    </>
   )
 }
 

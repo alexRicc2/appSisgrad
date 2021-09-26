@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import NavBar from '../../components/Navbar';
 
-export default function Solicitacoes() {
+export default function Solicitacoes({navigation}) {
   return (
     <>
+    <NavBar titulo='Solicitações' navigation={navigation}/>
       <View style={style.container}>
         <View style={style.containerNome}>
           <Text style={style.nome}>Nome</Text>

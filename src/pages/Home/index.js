@@ -2,7 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, Button } from 'react-native';
 import Info from '../../components/Info';
 import Opcoes from '../../components/Opcoes';
-import { COR_PRINCIPAL } from '../../estilos';
+import { COR_PRINCIPAL,COR_PRINCIPAL_ESCURA } from '../../estilos';
+import NavBar from '../../components/Navbar';
+import styled from 'styled-components/native';
+
+const HomeBody = styled.View`
+  padding: 44px;
+  background-color: ${({theme}) => theme.body};
+`
 
 export default function Home({navigation}) {
   return (
@@ -12,12 +19,13 @@ export default function Home({navigation}) {
     <StatusBar barStyle="light-content" backgroundColor={COR_PRINCIPAL}/>
     
       <StatusBar/>
-      <View style={{ padding: 44 }}>
+      <NavBar titulo='HOME' navigation={navigation}/>
+      <HomeBody>
         
         <Info/>
         <Opcoes navigation={navigation}/>      
       
-      </View>
+      </HomeBody>
     </SafeAreaView>
     </>
   );

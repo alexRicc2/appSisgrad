@@ -1,9 +1,11 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native'
 import { CINZA_CLARO, COR_PRINCIPAL } from '../../estilos';
-
-export default function Rematricula(){
+import NavBar from '../../components/Navbar';
+export default function Rematricula({navigation}){
   return(
+    <>
+    <NavBar navigation={navigation} titulo='Rematricula' />
     <View style={style.container}>
     <View style={style.infoContainer}>
     <View style={style.estatus}>
@@ -14,6 +16,7 @@ export default function Rematricula(){
     </View>
     </View>
     </View>
+    </>
   )
 }
 

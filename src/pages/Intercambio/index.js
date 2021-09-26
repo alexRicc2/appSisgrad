@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Text,View, StyleSheet, ScrollView, TouchableOpacity, Alert, Image} from 'react-native';
 import { CINZA_CLARO, COR_PRINCIPAL } from '../../estilos';
 import { Table, Row, Rows } from 'react-native-table-component';
-
-export default function Intercambio(){
+import NavBar from '../../components/Navbar';
+export default function Intercambio({navigation}){
 
   function printa(value){
     Alert.alert('Intercambio',
@@ -36,6 +36,8 @@ export default function Intercambio(){
   ])
 
   return(
+    <>
+    <NavBar titulo='Rematricula' navigation={navigation}/>
     <ScrollView style={styles.container}>
       <View style={{marginTop: 20}}>
         <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
@@ -46,6 +48,7 @@ export default function Intercambio(){
       <Text style={style.nome}>SALIENTAMOS QUE É POSSÍVEL INSCREVER-SE EM UM EDITAL DE CURTA DURAÇÃO E EM UM EDITAL GERAL DE INTERCÂMBIO (6 MESES OU MAIS) AO MESMO TEMPO.</Text>
         
     </ScrollView>
+    </>
   )
 }
 

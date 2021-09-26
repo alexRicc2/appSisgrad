@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList, Button} from 'react-native'
 import Mensagem from '../../components/Mensagem';
-
+import NavBar from '../../components/Navbar';
 const mensagensArray = [
   {
     id: 1,
@@ -86,6 +86,7 @@ const mensagensArray = [
 export default function Mensagens({navigation}){
   return(
     <>
+    
     <View style={style.container}>
     <FlatList
       contentContainerStyle={{ flexGrow: 1 }}

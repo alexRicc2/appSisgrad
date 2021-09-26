@@ -3,10 +3,17 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 const TextStyled = styled.Text`
-  font-size: 18px;
   color: ${({ theme }) => theme.text};
-  font-weight: 500;
 `;
+const OpcaoBotao = styled.View`
+  width: 48%;
+  height: 125px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: ${({theme}) => theme.inside};
+  border-radius: 15px;
+`
 
 export default function Opcao({children, texto, navigation, destino}){
 
@@ -14,11 +21,10 @@ export default function Opcao({children, texto, navigation, destino}){
   return (
 
     <>
-    <TextStyled>oioiiiiiiiiiiiiiiii</TextStyled>
-    <TouchableOpacity style={style.opcao} onPress={()=> navigation.navigate(page)}>
+    <OpcaoBotao onPress={()=> navigation.navigate(page)}>
       {children}
-      <Text>{texto}</Text>
-    </TouchableOpacity>
+      <TextStyled>{texto}</TextStyled>
+    </OpcaoBotao>
     </>
   )
 }
