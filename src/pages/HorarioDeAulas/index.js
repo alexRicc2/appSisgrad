@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { color } from 'react-native-reanimated';
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import { COR_PRINCIPAL } from '../../estilos';
 import NavBar from '../../components/Navbar';

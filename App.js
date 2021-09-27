@@ -6,6 +6,7 @@ import { StatusBar } from "react-native";
 import { COR_PRINCIPAL_ESCURA, COR_PRINCIPAL } from "./src/estilos";
 
 export const ThemeContext = React.createContext();
+export const ThemeToggle = React.createContext();
 //TODO: useContext para o toggleTema e substituir o tema para o useContext em Rotas
 export default function App() {
   const [tema, setTema] = useState(true);
@@ -21,7 +22,9 @@ export default function App() {
   return (
     <ThemeProvider theme={tema ? temaClaro : temaEscuro}>
       <ThemeContext.Provider value={tema}>
-        <Rotas toggleTema={toggleTema} tema={tema} />
+        <ThemeToggle.Provider value={toggleTema}>
+        <Rotas/>
+        </ThemeToggle.Provider>
       </ThemeContext.Provider>
     </ThemeProvider>
   );

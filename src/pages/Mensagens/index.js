@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, FlatList, Button} from 'react-native'
+import {View, StyleSheet, FlatList} from 'react-native'
 import Mensagem from '../../components/Mensagem';
-import NavBar from '../../components/Navbar';
+
 const mensagensArray = [
   {
     id: 1,

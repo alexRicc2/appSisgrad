@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Button } from 'react-native';
+import { StyleSheet, SafeAreaView, StatusBar} from 'react-native';
 import Info from '../../components/Info';
 import Opcoes from '../../components/Opcoes';
 import { COR_PRINCIPAL,COR_PRINCIPAL_ESCURA } from '../../estilos';
@@ -11,8 +11,8 @@ const HomeBody = styled.View`
   background-color: ${({theme}) => theme.body};
 `
 
-export default function Home({navigation, route}) {
-  console.log('tema em home: ',route.params.tema, '\nCor icone em home: ', route.params.corIcone)
+export default function Home({navigation}) {
+
   return (
     <>
     <SafeAreaView style={{ flex: 0, backgroundColor: 'red' }} />

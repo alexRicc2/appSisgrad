@@ -1,25 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native'
-import { CINZA_CLARO } from '../../estilos';
+import styled from 'styled-components/native';
+
+const ViewDiscipline = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: ${({theme}) => theme.inside};
+`
+const TextStyled = styled.Text`
+  width: 30%;
+  color: ${({theme})=> theme.text};
+`
+const TextStyledCenter = styled.Text`
+  width: 30%;
+  text-align: center;
+  color: ${({theme})=> theme.text};
+`
 
 export default function DisciplinaDados({disciplina, ch, equivalencia}) {
   return (
-    <View style={[style.containerDisciplina, { backgroundColor: CINZA_CLARO }]}>
-      <Text style={style.textoDisciplina}>{disciplina}</Text>
-      <Text style={[style.textoDisciplina, { textAlign: 'center' }]}>{ch}</Text>
-      <Text style={style.textoDisciplina}>{equivalencia}</Text>
-    </View>
+    <ViewDiscipline>
+      <TextStyled >{disciplina}</TextStyled>
+      <TextStyledCenter>{ch}</TextStyledCenter>
+      <TextStyled >{equivalencia}</TextStyled>
+    </ViewDiscipline>
   )
 }
-
-const style = StyleSheet.create({
-  containerDisciplina:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-  },
-  textoDisciplina:{
-    width: '30%',
-  }
-})

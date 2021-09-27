@@ -20,8 +20,9 @@ export const temaClaro = {
 
 export const temaEscuro = {
   body: fundoEscuro,
-  principal: COR_PRINCIPAL_ESCURA,
+  principal: COR_PRINCIPAL_ESCURA, 
   inside: conteudoEscuro,
   text: textoFundoEscuro,
   filter: "invert(100%)",
 };
+

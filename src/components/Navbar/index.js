@@ -27,15 +27,7 @@ export default function NavBar({navigation , titulo}){
 }
 
 const style = StyleSheet.create({
-  menu: {
-    backgroundColor: '#2196f3',
-    color: '#fff',
-    flexDirection: 'row',
-    padding: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 58
-  },
+  
   titulo:{
     fontWeight: 'bold',
     color: 'white',
