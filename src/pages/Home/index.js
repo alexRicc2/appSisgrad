@@ -11,12 +11,13 @@ const HomeBody = styled.View`
   background-color: ${({theme}) => theme.body};
 `
 
-export default function Home({navigation}) {
+export default function Home({navigation, route}) {
+  console.log('tema em home: ',route.params.tema, '\nCor icone em home: ', route.params.corIcone)
   return (
     <>
     <SafeAreaView style={{ flex: 0, backgroundColor: 'red' }} />
     <SafeAreaView style={styles.container}>
-    <StatusBar barStyle="light-content" backgroundColor={COR_PRINCIPAL}/>
+    <StatusBar barStyle="light-content"/>
     
       <StatusBar/>
       <NavBar titulo='HOME' navigation={navigation}/>

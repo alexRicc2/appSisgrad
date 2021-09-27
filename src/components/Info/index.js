@@ -1,17 +1,19 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { View, StyleSheet, Text, Image, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { COR_PRINCIPAL } from '../../estilos';
 import styled from 'styled-components/native';
-
+import { ThemeContext } from '../../../App';
 const TextStyled = styled.Text`
   color: ${({ theme }) => theme.text};
   padding: 2px 0;
 `;
 
 
-export default function Info() {
+export default function Info({tema}) {
+  const temaContext = useContext(ThemeContext)
+  console.log('temaContext em info:', temaContext)
   return (
     <>
     <View style={{ alignItems: 'center'}}>
@@ -22,11 +24,11 @@ export default function Info() {
     <View style={{alignItems: 'center'}}>
     <View style={{marginBottom: '23%'}}>
     <View style={{ flexDirection: 'row' ,alignItems: 'center' }}>
-        <Ionicons name="person" size={18} color={COR_PRINCIPAL} style={{marginRight: 10}}/>
+        <Ionicons name="person" size={18} color={ temaContext ? COR_PRINCIPAL: 'white'} style={{marginRight: 10}}/>
         <TextStyled>Alex Ricardo Rodrigues Sant'Anna</TextStyled>
       </View>
       <View style={{ flexDirection: 'row' ,alignItems: 'center'}}>
-        <Entypo name="info-with-circle" size={18} color={COR_PRINCIPAL} style={{marginRight: 10}}/>
+        <Entypo name="info-with-circle" size={18} color={ temaContext ? COR_PRINCIPAL: 'white'} style={{marginRight: 10}}/>
         <TextStyled>RA: 10000210</TextStyled>
       </View>
       <TextStyled>Graduando de Ciências da Computação</TextStyled>

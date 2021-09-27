@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './pages/Home';
@@ -27,6 +27,13 @@ const MyTheme = {
   },
 };
 export default function Rotas({toggleTema, tema}) {
+  console.log('tema em rotas: ',tema)
+  let corIcone = COR_PRINCIPAL;
+  useEffect(()=>{
+    tema? corIcone = COR_PRINCIPAL : corIcone = 'white'
+    console.log('cor Icone em rotas: ',corIcone)
+  })
+
   return (
     <NavigationContainer >
       <Drawer.Navigator initialRouteName="Inicio"
@@ -40,7 +47,7 @@ export default function Rotas({toggleTema, tema}) {
         headerShown: false 
       }}>
        
-        <Drawer.Screen name="Inicio" component={Home} tema={tema}/>
+        <Drawer.Screen name="Inicio" component={Home} initialParams={{tema: tema, corIcone: corIcone}}/>
         
         <Drawer.Screen name="Dados do Curso" component={DadosCurso} options={{
           headerStyle: {

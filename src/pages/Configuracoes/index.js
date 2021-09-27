@@ -16,8 +16,6 @@ const TextStyled = styled.Text`
 
 export default function Configuracoes({navigation , route}){
   
-  console.log(route.params)
-  const [barra, setBarra] = useState(true);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {setIsEnabled(previousState => !previousState); 
     route.params.toggle()
