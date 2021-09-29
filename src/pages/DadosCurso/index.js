@@ -1,37 +1,39 @@
-import React from 'react';
-import {View, StyleSheet, FlatList} from 'react-native'
-import TabelaDados from '../../components/TabelaDados';
-import { TABELA_DISCIPLINAS_ARRAY } from '../../Dados/disciplinas';
+import React from "react";
+import { StyleSheet, FlatList } from "react-native";
+import TabelaDados from "../../components/TabelaDados";
+import { TABELA_DISCIPLINAS_ARRAY } from "../../Dados/disciplinas";
+import NavBar from "../../components/Navbar";
+import styled from "styled-components/native";
 
-export default function DadosCurso(){
-  return(
-    <View style={style.container}>
+const Body = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.body};
+`;
 
-    {/* <Text style={style.title}>Bacharelado em Ciências da computação</Text> */}
-
-    <FlatList 
-    contentContainerStyle={{ flexGrow: 1 }}
-      data={TABELA_DISCIPLINAS_ARRAY}
-      renderItem={({item}) => <TabelaDados {...item}/>}
-      keyExtractor={({id}) => String(id)}
-    />
-
-    </View>
-    
-  )
+export default function DadosCurso({ navigation }) {
+  return (
+    <>
+      <NavBar titulo="Dados do Curso" navigation={navigation} />
+      <Body>
+        <FlatList
+          contentContainerStyle={{ flexGrow: 1 }}
+          data={TABELA_DISCIPLINAS_ARRAY}
+          renderItem={({ item }) => <TabelaDados {...item} />}
+          keyExtractor={({ id }) => String(id)}
+        />
+      </Body>
+    </>
+  );
 }
 
 const style = StyleSheet.create({
   title: {
     fontSize: 16,
-    alignSelf: 'flex-start',
-    marginLeft: '5%',
+    alignSelf: "flex-start",
+    marginLeft: "5%",
     marginBottom: 16,
   },
-  container:{
+  container: {
     flex: 1,
   },
- 
-
-  
-})
+});

@@ -1,11 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { color } from 'react-native-reanimated';
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import { COR_PRINCIPAL } from '../../estilos';
- 
-export default function HorarioDeAulas(){
+import NavBar from '../../components/Navbar';
+import styled from 'styled-components';
+import { ThemeContext } from '../../../App';
+const Container = styled.ScrollView`
+flex: 1; 
+padding: 16px;
+padding-top: 30px;
+background-color: ${({theme})=>theme.body};
+`
+const TextAluno = styled.Text`
+margin-bottom: 24px;
+color: ${({theme})=>theme.text};
+`
+const TextLegenda = styled.Text`
+color: ${({theme})=>theme.text};
+`
+export default function HorarioDeAulas({navigation}){
   
+  const temaContext = useContext(ThemeContext)
+  console.log('temaContext em horarioAulas: ', temaContext, 'aki')
   const [tableHead, setTableHead] = useState(['', 'SEG', 'TER', 'QUA','QUI','SEX'])
   const [tableData, setTableData] = useState([
   ['',     '1948S', '1949S','1955S','1948S'],
@@ -27,26 +43,27 @@ export default function HorarioDeAulas(){
   
   return(
     <>
-    <ScrollView style={styles.container}>
-    <Text style={styles.aluno}>Aluno: 201000000 - Alex Ricardo Rodrigues Sant'Anna | CC2014 - Bacharelado em Ciência da Computação - Integral</Text>
+    <NavBar titulo='Horário de Aulas' navigation={navigation}/>
+    <Container>
+    <TextAluno>Aluno: 201000000 - Alex Ricardo Rodrigues Sant'Anna | CC2014 - Bacharelado em Ciência da Computação - Integral</TextAluno>
         <Table borderStyle={{borderWidth: 1, borderColor:COR_PRINCIPAL}}>
           <Row data={tableHead} style={[styles.head]} textStyle={[styles.text, {color:'#fff'}]}/>
           <TableWrapper style={styles.wrapper}>
-            <Col data={tableTitle} style={styles.title}  textStyle={styles.text}/>
-            <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.row} textStyle={styles.text}/>
+            <Col data={tableTitle} style={{backgroundColor: temaContext? '#f6f8fa': COR_PRINCIPAL}}  textStyle={[styles.text, {color: temaContext? 'black': 'white'}]}/>
+            <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.row} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]}/>
           </TableWrapper>
         </Table>
         <View style={styles.legenda}>
-          <Text>1948S - Cálculo Numérico</Text>
-          <Text>1949S - Estrutura de Dados II</Text>
-          <Text>1950S - Laboratório de Cálculo Numérico</Text>
-          <Text>1951S - Laboratório de Estrutura de Dados II</Text>
-          <Text>1952S - Laboratório de Linguagem de Montagem</Text>
-          <Text>1953S - Organização de Computadores</Text>
-          <Text>1954S - Probabilidade e Estatística</Text>
-          <Text>1955S - Projeto e Análise de Algoritmos</Text>
+          <TextLegenda>1948S - Cálculo Numérico</TextLegenda>
+          <TextLegenda>1949S - Estrutura de Dados II</TextLegenda>
+          <TextLegenda>1950S - Laboratório de Cálculo Numérico</TextLegenda>
+          <TextLegenda>1951S - Laboratório de Estrutura de Dados II</TextLegenda>
+          <TextLegenda>1952S - Laboratório de Linguagem de Montagem</TextLegenda>
+          <TextLegenda>1953S - Organização de Computadores</TextLegenda>
+          <TextLegenda>1954S - Probabilidade e Estatística</TextLegenda>
+          <TextLegenda>1955S - Projeto e Análise de Algoritmos</TextLegenda>
         </View>
-    </ScrollView>
+    </Container>
     </>
   )
 }

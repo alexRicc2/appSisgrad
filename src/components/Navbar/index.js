@@ -1,23 +1,36 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-export default function NavBar(){
+import styled from 'styled-components/native';
+
+const Menu = styled.View`
+  background-color: ${({theme}) => theme.principal};
+  color: ${({theme}) => theme.text};
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  height: 58px;
+`
+
+export default function NavBar({navigation , titulo}){
   return(
-    <View style={style.menu}>
-        <Entypo name="menu" size={34} color="white" />
-        <MaterialIcons name="logout" size={34} color="white" />
-    </View>
+    <Menu>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Entypo name="menu" size={28} color="white" onPress={() => navigation.toggleDrawer()} style={{marginRight: 24}}/>
+        <Text style={style.titulo}>{titulo}</Text>
+      </View>
+        <MaterialIcons name="logout" size={28} color="white" />
+    </Menu>
   )
 }
 
 const style = StyleSheet.create({
-  menu: {
-    backgroundColor: '#2196f3',
-    color: '#fff',
-    flexDirection: 'row',
-    padding: 10,
-    justifyContent: 'space-between'
-  },
+  
+  titulo:{
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 18
+  }
 })
