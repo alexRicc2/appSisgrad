@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Text, StyleSheet, ScrollView } from "react-native";
-import { CINZA_CLARO } from "../../estilos";
+import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
 import { Table, Row, Rows } from "react-native-table-component";
 import NavBar from "../../components/Navbar";
+import styled from "styled-components";
+import { ThemeContext } from "../../../App";
+const Container = styled.ScrollView`
+flex: 1; 
+padding: 16px;
+padding-top: 0;
+background-color: ${({theme})=>theme.body};
+`
+const TextPeriodo = styled.Text`
+  margin-bottom: 12px;
+  margin-top: 32px;
+  text-align: center;
+  font-size: 18px;
+  color: ${({theme})=> theme.text};
+`
 
 export default function HistoricoEscolar({ navigation }) {
   const [tableHead, setTableHead] = useState([
@@ -29,40 +44,37 @@ export default function HistoricoEscolar({ navigation }) {
   ]);
   const [tableDataGeral, setTableDataGeral] = useState([["8.575", "98%"]]);
 
+  const temaContext = useContext(ThemeContext)
   return (
     <>
       <NavBar titulo="Histórico Escolas" navigation={navigation} />
-      <ScrollView style={styles.container}>
-        <Text style={style.periodo}>1 série - 1 periodo</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={styles.text} />
+      <Container>
+        <TextPeriodo>1 série - 1 periodo</TextPeriodo>
+        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
+          <Row data={tableHead} style={styles.head} textStyle={[styles.text,{color: 'white'}]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
         </Table>
-        <Text style={style.periodo}>1 série - 2 periodo</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={styles.text} />
+        <TextPeriodo>1 série - 2 periodo</TextPeriodo>
+        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
+          <Row data={tableHead} style={styles.head} textStyle={[styles.text,{color: 'white'}]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
         </Table>
-        <Text style={style.periodo}>2 série - 1 periodo</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={styles.text} />
+        <TextPeriodo>2 série - 1 periodo</TextPeriodo>
+        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
+          <Row data={tableHead} style={styles.head} textStyle={[styles.text,{color: 'white'}]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
         </Table>
-        <Text style={style.periodo}>2 série - 2 periodo</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={styles.text} />
+        <TextPeriodo>2 série - 2 periodo</TextPeriodo>
+        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
+          <Row data={tableHead} style={styles.head} textStyle={[styles.text,{color: 'white'}]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
         </Table>
-        <Text style={style.periodo}>Total</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
-          <Row
-            data={tableHeadGeral}
-            style={styles.head}
-            textStyle={styles.text}
-          />
-          <Rows data={tableDataGeral} textStyle={styles.text} />
+        <TextPeriodo>Total</TextPeriodo>
+        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
+          <Row data={tableHeadGeral} style={styles.head} textStyle={[styles.text,{color: 'white'}]} />
+          <Rows data={tableDataGeral} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
         </Table>
-      </ScrollView>
+      </Container>
     </>
   );
 }
@@ -90,6 +102,6 @@ const style = StyleSheet.create({
 });
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 0, backgroundColor: "#fff" },
-  head: { height: 40, backgroundColor: "#f1f8ff" },
+  head: { height: 40, backgroundColor: COR_PRINCIPAL},
   text: { margin: 6, textAlign: "center" },
 });

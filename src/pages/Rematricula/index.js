@@ -2,22 +2,34 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
 import NavBar from "../../components/Navbar";
+import styled from "styled-components/native";
+
+const Container = styled.View`
+flex: 1;
+justify-content: center;
+background-color: ${({theme})=> theme.body};
+`
+const Estatus = styled.View`
+  background-color: #ccc;
+  padding: 15px 10px;
+`
+
 export default function Rematricula({ navigation }) {
   return (
     <>
       <NavBar navigation={navigation} titulo="Rematricula" />
-      <View style={style.container}>
+      <Container>
         <View style={style.infoContainer}>
-          <View style={style.estatus}>
+          <Estatus>
             <Text style={style.text}>Fora do periodo de rematricula</Text>
-          </View>
+          </Estatus>
           <View style={style.info}>
             <Text style={style.text}>
               Confira o calendário escolar para mais informações
             </Text>
           </View>
         </View>
-      </View>
+      </Container>
     </>
   );
 }
