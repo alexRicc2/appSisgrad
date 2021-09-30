@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native'
 import Mensagem from '../../components/Mensagem';
-
+import styled from 'styled-components';
 const mensagensArray = [
   {
     id: 1,
@@ -82,20 +82,22 @@ const mensagensArray = [
   },
 
 ]
+const Container = styled.View`
+flex: 1;
+background-color: ${({theme})=> theme.body};
+`
 
 export default function Mensagens({navigation}){
   return(
-    <>
     
-    <View style={style.container}>
+    <Container>
     <FlatList
       contentContainerStyle={{ flexGrow: 1 }}
       data={mensagensArray}
       renderItem={({item}) => <Mensagem {...item} navigation={navigation}/>}
       keyExtractor={({id}) => String(id)}
     />
-    </View>
-    </>
+    </Container>
   )
 }
 const style = StyleSheet.create({

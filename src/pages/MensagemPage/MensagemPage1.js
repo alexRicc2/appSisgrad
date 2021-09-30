@@ -1,6 +1,10 @@
 import React from 'react';
-import {Text, View, StyleSheet, ScrollView} from 'react-native'
-import { CINZA_CLARO } from '../../estilos';
+import {Text, View, StyleSheet, ScrollView, Button, TouchableOpacity} from 'react-native'
+import { CINZA_CLARO, COR_PRINCIPAL, conteudoEscuro} from '../../estilos';
+import styled from 'styled-components';
+import { ThemeContext } from '../../../App';
+import { useContext } from 'react/cjs/react.development';
+import { AntDesign } from '@expo/vector-icons';
 
 const mensagemContent = {
   titulo: '15/09 - Link da Aula de Lab ED-2 às 14h',
@@ -18,21 +22,40 @@ const mensagemContent = {
   Camila
   `
 }
+const Container = styled.ScrollView`
+flex: 1;
+padding: 16px;
+padding-top: 28px;
+background-color: ${({theme})=> theme.body};
+`
 
-export default function MensagemPage1(){
+const TextStyled = styled.Text`
+color: ${({theme})=> theme.text};
+`
+const TextStyledTitulo = styled.Text`
+color: ${({theme})=> theme.text};
+font-weight: bold;
+`
+export default function MensagemPage1({navigation}){
+  const temaContext = useContext(ThemeContext);
   return(
-    <ScrollView style={styles.container}>
-    <View style={styles.mensagemCard}>
-      <View style={styles.mensagemHeader}>
-        <Text style={styles.mensagemTitulo}>{mensagemContent.titulo}</Text>
+    <Container>
+    <View style={[styles.mensagemCard, {borderColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
+      <View style={[styles.mensagemHeader, {backgroundColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
+        <TextStyledTitulo>{mensagemContent.titulo}</TextStyledTitulo>
       </View>
-      <View style={styles.mensagemCorpo}>
-        <Text>De: {mensagemContent.remetente}</Text>
-        <Text>Recebida em: {mensagemContent.data}</Text>
-        <Text>{mensagemContent.texto}</Text>
+      <View style={[styles.mensagemCorpo, {backgroundColor: temaContext? '#fff': conteudoEscuro}]}>
+        <TextStyled>De: {mensagemContent.remetente}</TextStyled>
+        <TextStyled>Recebida em: {mensagemContent.data}</TextStyled>
+        <TextStyled>{mensagemContent.texto}</TextStyled>
       </View>
     </View>
-    </ScrollView>
+    <TouchableOpacity style={styles.buttonBack} onPress={ () => {navigation.goBack()}}>
+    <AntDesign name="back" size={20} color="white" />
+      <Text style={{color: 'white'}}>Voltar</Text>
+    </TouchableOpacity>
+    
+    </Container>
   )
 }
 
@@ -41,7 +64,7 @@ const styles = StyleSheet.create({
   mensagemCard:{
     borderWidth: 1,
     borderColor: CINZA_CLARO,
-    marginBottom: 50,
+    marginBottom: 20,
     borderBottomStartRadius: 20,
     borderBottomEndRadius: 20
 
@@ -49,11 +72,23 @@ const styles = StyleSheet.create({
   mensagemHeader: {
     backgroundColor: CINZA_CLARO,
     padding: 8,
+    
   },
   mensagemTitulo: {
     fontWeight: 'bold'
   },
   mensagemCorpo:{
     padding: 8,
+    borderBottomStartRadius: 20,
+    borderBottomEndRadius: 20
+  },
+  buttonBack:{
+    flexDirection: 'row',
+    backgroundColor: COR_PRINCIPAL,
+    padding: 10,
+    justifyContent: 'center',
+    width: 100,
+    alignSelf: 'center',
+    borderRadius: 10,
   }
 })

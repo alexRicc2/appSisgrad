@@ -13,6 +13,14 @@ const Estatus = styled.View`
   background-color: #ccc;
   padding: 15px 10px;
 `
+const TextStyled = styled.Text`
+color: ${({theme})=> theme.text};
+text-align: center;
+`
+const Info = styled.View`
+background-color: ${({theme})=> theme.inside};
+padding: 10px;
+`
 
 export default function Rematricula({ navigation }) {
   return (
@@ -20,14 +28,14 @@ export default function Rematricula({ navigation }) {
       <NavBar navigation={navigation} titulo="Rematricula" />
       <Container>
         <View style={style.infoContainer}>
-          <Estatus>
+          <View style={style.estatus}>
             <Text style={style.text}>Fora do periodo de rematricula</Text>
-          </Estatus>
-          <View style={style.info}>
-            <Text style={style.text}>
-              Confira o calendário escolar para mais informações
-            </Text>
           </View>
+          <Info>
+            <TextStyled>
+              Confira o calendário escolar para mais informações
+            </TextStyled>
+          </Info>
         </View>
       </Container>
     </>
@@ -46,7 +54,7 @@ const style = StyleSheet.create({
     borderColor: COR_PRINCIPAL,
   },
   estatus: {
-    backgroundColor: CINZA_CLARO,
+    backgroundColor: COR_PRINCIPAL,
     paddingHorizontal: 10,
     paddingVertical: 15,
   },
@@ -56,5 +64,6 @@ const style = StyleSheet.create({
   text: {
     textAlign: "center",
     textTransform: "uppercase",
+    color: 'white',
   },
 });
