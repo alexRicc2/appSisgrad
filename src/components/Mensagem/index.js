@@ -3,8 +3,7 @@ import {TouchableOpacity,View, Text, StyleSheet} from 'react-native'
 import { useState } from 'react';
 import { CINZA, conteudoEscuro } from '../../estilos';
 import styled from 'styled-components';
-import { ThemeContext } from '../../../App';
-
+import temaContext from '../../Context/tema';
 const TextStyled = styled.Text`
 color: ${({theme})=> theme.text};
 `
@@ -14,9 +13,9 @@ font-weight: bold;
 `
 export default function Mensagem({professor, mensagem, horario, mensagemPage, navigation}){
   const [lido, setLido] = useState('green')
-  const temaContext = useContext(ThemeContext)
+  const tema = useContext(temaContext)
   return(
-    <TouchableOpacity style={[style.container, {backgroundColor: temaContext? CINZA: conteudoEscuro}]} onPress={() => {
+    <TouchableOpacity style={[style.container, {backgroundColor: tema? CINZA: conteudoEscuro}]} onPress={() => {
       setLido('gray')
       navigation.navigate(mensagemPage)}}>
       <View style={[style.status , {backgroundColor: lido}]}></View>

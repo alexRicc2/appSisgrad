@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Text,
   View,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
   Alert,
-  Image,
 } from "react-native";
 import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
 import { Table, Row, Rows } from "react-native-table-component";
 import NavBar from "../../components/Navbar";
 import styled from "styled-components";
-import { ThemeContext } from "../../../App";
+import temaContext from "../../Context/tema";
 
 const Container = styled.ScrollView`
 flex: 1; 
@@ -27,6 +25,7 @@ margin-bottom: 20px;
     color: ${({theme})=> theme.text};
 `
 export default function Intercambio({ navigation }) {
+  const tema = useContext(temaContext)
   function printa(value) {
     Alert.alert(
       "Intercambio",
@@ -77,16 +76,16 @@ export default function Intercambio({ navigation }) {
       <NavBar titulo="Rematricula" navigation={navigation} />
       <Container>
         <View style={{ marginTop: 20 }}>
-          <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+          <Table borderStyle={{ borderWidth: 2, borderColor: tema? "#c8e1ff": COR_PRINCIPAL }}>
             <Row
               data={tableHead}
               flexArr={[2, 1, 1, 1, 1]}
-              style={styles.head}
-              textStyle={styles.text}
+              style={[styles.head, { backgroundColor: tema? "#f1f8ff": COR_PRINCIPAL }]}
+              textStyle={[styles.text, {color: tema? COR_PRINCIPAL: 'white'}]}
             />
             <Rows
               data={tableData}
-              textStyle={styles.text}
+              textStyle={[styles.text, {color: tema? COR_PRINCIPAL: 'white'}]}
               flexArr={[2, 1, 1, 1, 1]}
             />
           </Table>
@@ -122,8 +121,8 @@ const style = StyleSheet.create({
 });
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 8, paddingTop: 0, backgroundColor: "#fff" },
-  head: { height: 40, backgroundColor: "#f1f8ff" },
-  text: { margin: 3, textAlign: "center", fontSize: 13, color: COR_PRINCIPAL },
+  head: { height: 40,},
+  text: { margin: 3, textAlign: "center", fontSize: 13,  },
   btn: {
     width: 58,
     marginLeft: 10,

@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View, StyleSheet, ScrollView} from 'react-native'
 import { CINZA_CLARO, COR_PRINCIPAL, conteudoEscuro} from '../../estilos';
 import styled from 'styled-components';
-import { ThemeContext } from '../../../App';
+import temaContext from '../../Context/tema';
 import { useContext } from 'react/cjs/react.development';
 const mensagemContent = {
   titulo: 'Concurso de contos e crônicas - RESULTADO',
@@ -46,14 +46,14 @@ color: ${({theme})=> theme.text};
 font-weight: bold;
 `
 export default function MensagemPage1(){
-  const temaContext = useContext(ThemeContext);
+  const tema = useContext(temaContext);
   return(
     <Container>
-    <View style={[styles.mensagemCard, {borderColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
-      <View style={[styles.mensagemHeader, {backgroundColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
+    <View style={[styles.mensagemCard, {borderColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
+      <View style={[styles.mensagemHeader, {backgroundColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
         <TextStyledTitulo>{mensagemContent.titulo}</TextStyledTitulo>
       </View>
-      <View style={[styles.mensagemCorpo, {backgroundColor: temaContext? '#fff': conteudoEscuro}]}>
+      <View style={[styles.mensagemCorpo, {backgroundColor: tema? '#fff': conteudoEscuro}]}>
         <TextStyled>De: {mensagemContent.remetente}</TextStyled>
         <TextStyled>Recebida em: {mensagemContent.data}</TextStyled>
         <TextStyled>{mensagemContent.texto}</TextStyled>

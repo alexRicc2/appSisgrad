@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
+import { COR_PRINCIPAL } from "../../estilos";
 import NavBar from "../../components/Navbar";
 import styled from "styled-components/native";
 

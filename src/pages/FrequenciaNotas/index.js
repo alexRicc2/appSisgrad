@@ -4,7 +4,7 @@ import { CINZA_CLARO, conteudoEscuro, COR_PRINCIPAL } from "../../estilos";
 import { Table, Row, Rows } from "react-native-table-component";
 import NavBar from "../../components/Navbar";
 import styled from "styled-components";
-import { ThemeContext } from "../../../App";
+import temaContext from "../../Context/tema";
 
 const Container = styled.ScrollView`
 flex: 1; 
@@ -36,7 +36,7 @@ export default function FrequenciaNotas({ navigation }) {
     ["Metodologia Científica", "-", "100%", "5/60"],
     ["Lab ATP", "-", "-", "0/30"],
   ]);
-  const temaContext = useContext(ThemeContext)
+  const tema = useContext(temaContext)
   return (
     <>
       <NavBar titulo="Frequências e Notas" navigation={navigation} />
@@ -47,8 +47,8 @@ export default function FrequenciaNotas({ navigation }) {
         </TextNome>
         <Text style={style.periodo}>2º Semestre/2021</Text>
         <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL }}>
-          <Row data={tableHead} style={[styles.head, {backgroundColor: conteudoEscuro}]} textStyle={[styles.text, {color: 'white'}]} />
-          <Rows data={tableData} style={{backgroundColor: temaContext? 'white': conteudoEscuro}}textStyle={[styles.text, {color: temaContext? 'black': 'white'}]} />
+          <Row data={tableHead} style={styles.head} textStyle={[styles.text, {color: 'white'}]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'}]} />
         </Table>
       </Container>
     </>

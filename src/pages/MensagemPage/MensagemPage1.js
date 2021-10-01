@@ -2,9 +2,9 @@ import React from 'react';
 import {Text, View, StyleSheet, ScrollView, Button, TouchableOpacity} from 'react-native'
 import { CINZA_CLARO, COR_PRINCIPAL, conteudoEscuro} from '../../estilos';
 import styled from 'styled-components';
-import { ThemeContext } from '../../../App';
 import { useContext } from 'react/cjs/react.development';
 import { AntDesign } from '@expo/vector-icons';
+import temaContext from '../../Context/tema';
 
 const mensagemContent = {
   titulo: '15/09 - Link da Aula de Lab ED-2 às 14h',
@@ -37,14 +37,14 @@ color: ${({theme})=> theme.text};
 font-weight: bold;
 `
 export default function MensagemPage1({navigation}){
-  const temaContext = useContext(ThemeContext);
+  const tema = useContext(temaContext);
   return(
     <Container>
-    <View style={[styles.mensagemCard, {borderColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
-      <View style={[styles.mensagemHeader, {backgroundColor: temaContext? CINZA_CLARO: COR_PRINCIPAL}]}>
+    <View style={[styles.mensagemCard, {borderColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
+      <View style={[styles.mensagemHeader, {backgroundColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
         <TextStyledTitulo>{mensagemContent.titulo}</TextStyledTitulo>
       </View>
-      <View style={[styles.mensagemCorpo, {backgroundColor: temaContext? '#fff': conteudoEscuro}]}>
+      <View style={[styles.mensagemCorpo, {backgroundColor: tema? '#fff': conteudoEscuro}]}>
         <TextStyled>De: {mensagemContent.remetente}</TextStyled>
         <TextStyled>Recebida em: {mensagemContent.data}</TextStyled>
         <TextStyled>{mensagemContent.texto}</TextStyled>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, FlatList} from 'react-native'
+import {StyleSheet, FlatList} from 'react-native'
 import Mensagem from '../../components/Mensagem';
 import styled from 'styled-components';
 const mensagensArray = [

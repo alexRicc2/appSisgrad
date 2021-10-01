@@ -1,10 +1,10 @@
 import React, {useContext} from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import NavBar from "../../components/Navbar";
 import styled from "styled-components/native";
-import { ThemeContext } from "../../../App";
 import { COR_PRINCIPAL } from "../../estilos";
+import temaContext from "../../Context/tema";
 
 const Container = styled.View`
   flex: 1;
@@ -20,12 +20,12 @@ const TextInfo = styled.Text`
 `
 
 export default function Solicitacoes({ navigation }) {
-  const temaContext = useContext(ThemeContext)
+  const  tema = useContext(temaContext)
   return (
     <>
       <NavBar titulo="Solicitações" navigation={navigation} />
       <Container>
-        <View style={[style.containerNome, {borderColor: temaContext? '#ccc': '#fff'}]}>
+        <View style={[style.containerNome, {borderColor:  tema? '#ccc': '#fff'}]}>
           <TextNome>Nome</TextNome>
         </View>
 
@@ -34,7 +34,7 @@ export default function Solicitacoes({ navigation }) {
             <AntDesign
               name="pdffile1"
               size={24}
-              color={temaContext? 'red': COR_PRINCIPAL}
+              color={ tema? 'red': COR_PRINCIPAL}
               style={style.iconeArquivo}
             />
             <TextInfo>Atestado de frequência</TextInfo>
@@ -43,7 +43,7 @@ export default function Solicitacoes({ navigation }) {
             <AntDesign
               name="pdffile1"
               size={24}
-              color={temaContext? 'red': COR_PRINCIPAL}
+              color={tema? 'red': COR_PRINCIPAL}
               style={style.iconeArquivo}
             />
             <TextInfo>Atestado de matrícula</TextInfo>
@@ -52,7 +52,7 @@ export default function Solicitacoes({ navigation }) {
             <AntDesign
               name="pdffile1"
               size={24}
-              color={temaContext? 'red': COR_PRINCIPAL}
+              color={tema? 'red': COR_PRINCIPAL}
               style={style.iconeArquivo}
             />
             <TextInfo>Atestado para intercâmbio</TextInfo>
@@ -61,7 +61,7 @@ export default function Solicitacoes({ navigation }) {
             <AntDesign
               name="pdffile1"
               size={24}
-              color={temaContext? 'red': COR_PRINCIPAL}
+              color={tema? 'red': COR_PRINCIPAL}
               style={style.iconeArquivo}
             />
             <TextInfo>Atestado de matrícula suspensa</TextInfo>
@@ -70,7 +70,7 @@ export default function Solicitacoes({ navigation }) {
             <AntDesign
               name="pdffile1"
               size={24}
-              color={temaContext? 'red': COR_PRINCIPAL}
+              color={tema? 'red': COR_PRINCIPAL}
               style={style.iconeArquivo}
             />
             <TextInfo>Atestado de conclusão de curso</TextInfo>
