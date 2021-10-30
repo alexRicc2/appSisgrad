@@ -1,5 +1,7 @@
 # Sisgrad
 
+Aplicativo feito em React-native do Sistema de graduação da Unesp
+
 ## 🚀 Quick start
 
  ```shell
