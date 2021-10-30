@@ -1,7 +1,9 @@
 import React from 'react';
 import {Text, View, StyleSheet, ScrollView} from 'react-native'
-import { CINZA_CLARO } from '../../estilos';
-
+import { CINZA_CLARO, COR_PRINCIPAL, conteudoEscuro} from '../../estilos';
+import styled from 'styled-components';
+import temaContext from '../../Context/tema';
+import { useContext } from 'react/cjs/react.development';
 const mensagemContent = {
   titulo: 'Concurso de contos e crônicas - RESULTADO',
   remetente: 'Reitoria',
@@ -28,20 +30,36 @@ const mensagemContent = {
   `
 }
 
-export default function MensagemPage2(){
+
+const Container = styled.ScrollView`
+flex: 1;
+padding: 16px;
+padding-top: 28px;
+background-color: ${({theme})=> theme.body};
+`
+
+const TextStyled = styled.Text`
+color: ${({theme})=> theme.text};
+`
+const TextStyledTitulo = styled.Text`
+color: ${({theme})=> theme.text};
+font-weight: bold;
+`
+export default function MensagemPage1(){
+  const tema = useContext(temaContext);
   return(
-    <ScrollView style={styles.container}>
-    <View style={styles.mensagemCard}>
-      <View style={styles.mensagemHeader}>
-        <Text style={styles.mensagemTitulo}>{mensagemContent.titulo}</Text>
+    <Container>
+    <View style={[styles.mensagemCard, {borderColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
+      <View style={[styles.mensagemHeader, {backgroundColor: tema? CINZA_CLARO: COR_PRINCIPAL}]}>
+        <TextStyledTitulo>{mensagemContent.titulo}</TextStyledTitulo>
       </View>
-      <View style={styles.mensagemCorpo}>
-        <Text>De: {mensagemContent.remetente}</Text>
-        <Text>Recebida em: {mensagemContent.data}</Text>
-        <Text>{mensagemContent.texto}</Text>
+      <View style={[styles.mensagemCorpo, {backgroundColor: tema? '#fff': conteudoEscuro}]}>
+        <TextStyled>De: {mensagemContent.remetente}</TextStyled>
+        <TextStyled>Recebida em: {mensagemContent.data}</TextStyled>
+        <TextStyled>{mensagemContent.texto}</TextStyled>
       </View>
     </View>
-    </ScrollView>
+    </Container>
   )
 }
 
@@ -58,11 +76,14 @@ const styles = StyleSheet.create({
   mensagemHeader: {
     backgroundColor: CINZA_CLARO,
     padding: 8,
+    
   },
   mensagemTitulo: {
     fontWeight: 'bold'
   },
   mensagemCorpo:{
     padding: 8,
+    borderBottomStartRadius: 20,
+    borderBottomEndRadius: 20
   }
 })

@@ -15,12 +15,12 @@ import { COR_PRINCIPAL, COR_PRINCIPAL_ESCURA } from "./estilos";
 import Configuracoes from "./pages/Configuracoes";
 import Notas from "./pages/Notas";
 import MensagensStack from "./MensagensStack";
-import { ThemeContext } from "../App";
+import temaContext from "./Context/tema";
 
 const Drawer = createDrawerNavigator();
 
 export default function Rotas() {
-  const tema = useContext(ThemeContext);
+  const tema = useContext(temaContext);
 
   return (
     <NavigationContainer>
@@ -35,6 +35,7 @@ export default function Rotas() {
         }}
       >
         <Drawer.Screen name="Inicio" component={Home} />
+      
         <Drawer.Screen name="Dados do Curso" component={DadosCurso} />
         <Drawer.Screen name="Notas" component={Notas} />
         <Drawer.Screen name="Horario De Aulas" component={HorarioDeAulas} />
@@ -58,7 +59,7 @@ export default function Rotas() {
             headerShown: true,
           }}
         />
-        <Drawer.Screen name="Configurações" component={Configuracoes} />
+      <Drawer.Screen name="Configurações" component={Configuracoes} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

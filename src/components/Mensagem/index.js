@@ -1,27 +1,36 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity,View, Text, StyleSheet} from 'react-native'
 import { useState } from 'react';
-import { CINZA } from '../../estilos';
-
+import { CINZA, conteudoEscuro } from '../../estilos';
+import styled from 'styled-components';
+import temaContext from '../../Context/tema';
+const TextStyled = styled.Text`
+color: ${({theme})=> theme.text};
+`
+const TextStyledProf = styled.Text`
+color: ${({theme})=> theme.text};
+font-weight: bold;
+`
 export default function Mensagem({professor, mensagem, horario, mensagemPage, navigation}){
   const [lido, setLido] = useState('green')
+  const tema = useContext(temaContext)
   return(
-    <TouchableOpacity style={style.container} onPress={() => {
+    <TouchableOpacity style={[style.container, {backgroundColor: tema? CINZA: conteudoEscuro}]} onPress={() => {
       setLido('gray')
       navigation.navigate(mensagemPage)}}>
       <View style={[style.status , {backgroundColor: lido}]}></View>
-      <View style={style.mensagem}>
-      <Text style={style.professor}>{professor}</Text>
-      <Text>{mensagem}</Text>
+      <View style={[style.mensagem, ]}>
+      <TextStyledProf>{professor}</TextStyledProf>
+      <TextStyled>{mensagem}</TextStyled>
       </View>
-      <Text>{horario}</Text>
+      <TextStyled>{horario}</TextStyled>
     </TouchableOpacity>
   )
 }
 
 const style = StyleSheet.create({
   container:{
-    backgroundColor: CINZA,
+
     flexDirection: 'row',
     minHeight: 50,
     marginHorizontal: 20,
@@ -40,9 +49,10 @@ const style = StyleSheet.create({
   },
   professor:{
     fontWeight: 'bold',
-    color: '#333',
+    color: 'white',//333
   },
   mensagem: {
     flexGrow: 1,
+  
   }
 })

@@ -4,7 +4,8 @@ import {Calendar} from 'react-native-calendars';
 import { COR_PRINCIPAL } from '../../estilos';
 import NavBar from '../../components/Navbar';
 import styled from 'styled-components/native';
-import { ThemeContext } from '../../../App';
+import temaContext from '../../Context/tema';
+
 const Container = styled.ScrollView`
 flex: 1; 
 background-color: ${({theme})=>theme.body};
@@ -24,13 +25,13 @@ const TemaCalendarEscuro = {
 }
 export default function CalendarioEscolar({navigation}){
   const diaLetivo = "#a7e0a3"
-  const temaContext = useContext(ThemeContext)
+  const tema = useContext(temaContext)
   console.log('temaContext em Calendario: ', temaContext, 'calendar')
   return(
     <>
     <NavBar titulo='Calendario Escolar' navigation={navigation}/>
     <Container>
-    {temaContext && <Calendar
+    {tema && <Calendar
         
         theme={TemaCalendarClaro}
 
@@ -59,7 +60,7 @@ export default function CalendarioEscolar({navigation}){
           '2021-09-30': {textColor: 'green',  color: diaLetivo},
         }}
     />}
-    {!temaContext && <Calendar
+    {!tema && <Calendar
         
         theme={TemaCalendarEscuro}
 

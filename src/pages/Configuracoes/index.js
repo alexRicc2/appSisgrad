@@ -3,8 +3,7 @@ import { Switch, StyleSheet} from "react-native";
 import NavBar from '../../components/Navbar';
 import styled from 'styled-components/native';
 import { COR_PRINCIPAL ,COR_PRINCIPAL_ESCURA } from '../../estilos';
-import { ThemeToggle } from '../../../App';
-
+import ToggleTemaContext from '../../Context/temaToggle';
 const Body = styled.View`
   flex: 1;
   align-items: center;
@@ -18,7 +17,7 @@ const TextStyled = styled.Text`
 export default function 
 Configuracoes({navigation}){
   
-  const TemaToggle = useContext(ThemeToggle)
+  const TemaToggle = useContext(ToggleTemaContext)
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {setIsEnabled(previousState => !previousState); 
     TemaToggle();
