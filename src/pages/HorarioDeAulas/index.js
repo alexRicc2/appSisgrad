@@ -4,7 +4,7 @@ import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-componen
 import { COR_PRINCIPAL } from '../../estilos';
 import NavBar from '../../components/Navbar';
 import styled from 'styled-components';
-import { ThemeContext } from '../../../App';
+import { TemaContext } from '../../components/common/TemaContext';
 const Container = styled.ScrollView`
 flex: 1; 
 padding: 16px;
@@ -20,8 +20,8 @@ color: ${({theme})=>theme.text};
 `
 export default function HorarioDeAulas({navigation}){
   
-  const temaContext = useContext(ThemeContext)
-  console.log('temaContext em horarioAulas: ', temaContext, 'aki')
+  const {tema} = useContext(TemaContext)
+
   const [tableHead, setTableHead] = useState(['', 'SEG', 'TER', 'QUA','QUI','SEX'])
   const [tableData, setTableData] = useState([
   ['',     '1948S', '1949S','1955S','1948S'],
@@ -49,8 +49,8 @@ export default function HorarioDeAulas({navigation}){
         <Table borderStyle={{borderWidth: 1, borderColor:COR_PRINCIPAL}}>
           <Row data={tableHead} style={[styles.head]} textStyle={[styles.text, {color:'#fff'}]}/>
           <TableWrapper style={styles.wrapper}>
-            <Col data={tableTitle} style={{backgroundColor: temaContext? '#f6f8fa': COR_PRINCIPAL}}  textStyle={[styles.text, {color: temaContext? 'black': 'white'}]}/>
-            <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.row} textStyle={[styles.text, {color: temaContext? 'black': 'white'}]}/>
+            <Col data={tableTitle} style={{backgroundColor: tema? '#f6f8fa': COR_PRINCIPAL}}  textStyle={[styles.text, {color: tema? 'black': 'white'}]}/>
+            <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.row} textStyle={[styles.text, {color: tema? 'black': 'white'}]}/>
           </TableWrapper>
         </Table>
         <View style={styles.legenda}>

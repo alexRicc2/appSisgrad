@@ -5,14 +5,14 @@ import { Entypo } from "@expo/vector-icons";
 import { iconesClaro, iconesEscuro } from "../../estilos";
 import styled from "styled-components/native";
 
-import { ThemeContext } from "../../../App";
+import { TemaContext } from "../common/TemaContext";
 const TextStyled = styled.Text`
   color: ${({ theme }) => theme.text};
   padding: 2px 0;
 `;
 
 export default function Info() {
-  const temaContext = useContext(ThemeContext);
+  const {tema} = useContext(TemaContext);
   return (
     <>
       <View style={{ alignItems: "center" }}>
@@ -29,7 +29,7 @@ export default function Info() {
             <Ionicons
               name="person"
               size={18}
-              color={temaContext ? iconesClaro : iconesEscuro}
+              color={tema ? iconesClaro : iconesEscuro}
               style={{ marginRight: 10 }}
             />
             <TextStyled>Alex Ricardo Rodrigues Sant'Anna</TextStyled>
@@ -38,7 +38,7 @@ export default function Info() {
             <Entypo
               name="info-with-circle"
               size={18}
-              color={temaContext ? iconesClaro : iconesEscuro}
+              color={tema ? iconesClaro : iconesEscuro}
               style={{ marginRight: 10 }}
             />
             <TextStyled>RA: 10000210</TextStyled>

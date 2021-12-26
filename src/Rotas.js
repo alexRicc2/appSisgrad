@@ -15,14 +15,16 @@ import { COR_PRINCIPAL, COR_PRINCIPAL_ESCURA } from "./estilos";
 import Configuracoes from "./pages/Configuracoes";
 import Notas from "./pages/Notas";
 import MensagensStack from "./MensagensStack";
-import { ThemeContext } from "../App";
-
+import { ThemeProvider } from "styled-components/native";
+import { TemaContext } from "./components/common/TemaContext";
+import { temaClaro, temaEscuro } from "./temas";
 const Drawer = createDrawerNavigator();
 
 export default function Rotas() {
-  const tema = useContext(ThemeContext);
+  const {tema} = useContext(TemaContext);
 
   return (
+    <ThemeProvider theme={tema ? temaClaro : temaEscuro}>
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="Inicio"
@@ -61,5 +63,6 @@ export default function Rotas() {
         <Drawer.Screen name="Configurações" component={Configuracoes} />
       </Drawer.Navigator>
     </NavigationContainer>
+    </ThemeProvider>
   );
 }

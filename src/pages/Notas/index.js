@@ -4,7 +4,7 @@ import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
 import { Table, Row, Rows } from "react-native-table-component";
 import NavBar from "../../components/Navbar";
 import styled from 'styled-components/native'
-import {ThemeContext} from '../../../App'
+import { TemaContext } from "../../components/common/TemaContext";
 
 const Container = styled.ScrollView`
 flex: 1; 
@@ -34,8 +34,8 @@ export default function Notas({ navigation }) {
     ["Lab ATP", 9],
     ["Média do Semestre 8.5"],
   ]);
-  const temaContext = useContext(ThemeContext);
-  console.log('temaContext: ', temaContext, ' ta aki')
+  const {tema} = useContext(TemaContext);
+
   return (
     <>
       <NavBar titulo="Notas" navigation={navigation} />
@@ -43,22 +43,22 @@ export default function Notas({ navigation }) {
         <TextPeriodo>1 série - 1 periodo</TextPeriodo>
         <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
           <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'} ]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
         </Table>
         <TextPeriodo>1 série - 2 periodo</TextPeriodo>
         <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
           <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'} ]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
         </Table>
         <TextPeriodo>2 série - 1 periodo</TextPeriodo>
         <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
           <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'} ]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
         </Table>
         <TextPeriodo>2 série - 2 periodo</TextPeriodo>
         <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
           <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: temaContext? 'black': 'white'} ]} />
+          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
         </Table>
       </Container>
     </>
