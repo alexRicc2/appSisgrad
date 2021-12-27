@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Text,
   View,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
   Alert,
-  Image,
 } from "react-native";
 import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
 import { Table, Row, Rows } from "react-native-table-component";
 import NavBar from "../../components/Navbar";
+import styled from "styled-components";
+import { TemaContext } from "../../components/common/TemaContext";
+const Container = styled.ScrollView`
+flex: 1; 
+padding: 8px;
+padding-top: 0px;
+background-color: ${({theme})=>theme.body};
+`
+const TextInfo = styled.Text`
+margin-bottom: 20px;
+    margin-top: 32px;
+    font-size: 16px;
+    color: ${({theme})=> theme.text};
+`
 export default function Intercambio({ navigation }) {
+  const {tema} = useContext(TemaContext)
   function printa(value) {
     Alert.alert(
       "Intercambio",
@@ -59,28 +72,28 @@ export default function Intercambio({ navigation }) {
 
   return (
     <>
-      <NavBar titulo="Rematricula" navigation={navigation} />
-      <ScrollView style={styles.container}>
+      <NavBar titulo="Intercambio" navigation={navigation} />
+      <Container>
         <View style={{ marginTop: 20 }}>
-          <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+          <Table borderStyle={{ borderWidth: 2, borderColor: tema? "#c8e1ff": COR_PRINCIPAL }}>
             <Row
               data={tableHead}
               flexArr={[2, 1, 1, 1, 1]}
-              style={styles.head}
-              textStyle={styles.text}
+              style={[styles.head, { backgroundColor: tema? "#f1f8ff": COR_PRINCIPAL }]}
+              textStyle={[styles.text, {color: tema? COR_PRINCIPAL: 'white'}]}
             />
             <Rows
               data={tableData}
-              textStyle={styles.text}
+              textStyle={[styles.text, {color: tema? COR_PRINCIPAL: 'white'}]}
               flexArr={[2, 1, 1, 1, 1]}
             />
           </Table>
         </View>
-        <Text style={style.nome}>
+        <TextInfo>
           SALIENTAMOS QUE É POSSÍVEL INSCREVER-SE EM UM EDITAL DE CURTA DURAÇÃO
           E EM UM EDITAL GERAL DE INTERCÂMBIO (6 MESES OU MAIS) AO MESMO TEMPO.
-        </Text>
-      </ScrollView>
+        </TextInfo>
+      </Container>
     </>
   );
 }
@@ -107,8 +120,8 @@ const style = StyleSheet.create({
 });
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 8, paddingTop: 0, backgroundColor: "#fff" },
-  head: { height: 40, backgroundColor: "#f1f8ff" },
-  text: { margin: 3, textAlign: "center", fontSize: 13, color: COR_PRINCIPAL },
+  head: { height: 40,},
+  text: { margin: 3, textAlign: "center", fontSize: 13,  },
   btn: {
     width: 58,
     marginLeft: 10,

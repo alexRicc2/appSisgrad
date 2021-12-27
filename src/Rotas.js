@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import React, { useContext } from "react";
+import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./pages/Home";
@@ -15,19 +15,21 @@ import { COR_PRINCIPAL, COR_PRINCIPAL_ESCURA } from "./estilos";
 import Configuracoes from "./pages/Configuracoes";
 import Notas from "./pages/Notas";
 import MensagensStack from "./MensagensStack";
+import { Login } from "./pages/Login";
 import { ThemeProvider } from "styled-components/native";
-import { TemaContext } from "./components/common/TemaContext";
+import { useTemaContext } from "./components/common/TemaContext";
 import { temaClaro, temaEscuro } from "./temas";
+
 const Drawer = createDrawerNavigator();
 
 export default function Rotas() {
-  const {tema} = useContext(TemaContext);
+  const {tema} = useTemaContext();
 
   return (
     <ThemeProvider theme={tema ? temaClaro : temaEscuro}>
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Inicio"
+        initialRouteName="Login"
         screenOptions={{
           drawerStyle: {
             backgroundColor: tema ? "white" : COR_PRINCIPAL_ESCURA,
@@ -36,6 +38,7 @@ export default function Rotas() {
           headerShown: false,
         }}
       >
+        <Drawer.Screen name="Login" component={Login}/>
         <Drawer.Screen name="Inicio" component={Home} />
         <Drawer.Screen name="Dados do Curso" component={DadosCurso} />
         <Drawer.Screen name="Notas" component={Notas} />

@@ -1,65 +1,57 @@
 import React, { useState, useContext } from "react";
-import { Text, StyleSheet, ScrollView } from "react-native";
-import { CINZA_CLARO, COR_PRINCIPAL } from "../../estilos";
-import { Table, Row, Rows } from "react-native-table-component";
+import { StyleSheet, FlatList} from "react-native";
+import { CINZA_CLARO, COR_PRINCIPAL, COR_PRINCIPAL_ESCURA } from "../../estilos";
 import NavBar from "../../components/Navbar";
 import styled from 'styled-components/native'
-import { TemaContext } from "../../components/common/TemaContext";
+import { PeriodoNota } from "./PeriodoNotas";
 
-const Container = styled.ScrollView`
+const Container = styled.View`
 flex: 1; 
 padding: 16px;
 padding-top: 0;
 background-color: ${({theme})=>theme.body};
 `
-
-const TextPeriodo = styled.Text`
-  margin-bottom: 12px;
-  margin-top: 32px;
-  text-align: center;
-  font-size: 18px;
-  color: ${({theme})=> theme.text};
-`
+const periodos = [
+  {
+    periodo: '1 série - 1 periodo',
+    id: 1
+  },
+  {
+    periodo: '1 série - 2 periodo',
+    id: 2
+  },
+  {
+    periodo: '2 série - 1 periodo',
+    id: 3
+  },
+  {
+    periodo: '2 série - 2 periodo',
+    id: 4
+  },
+  {
+    periodo: '3 série - 1 periodo',
+    id: 5
+  },
+  {
+    periodo: '3 série - 2 periodo',
+    id: 6
+  },
+]
 
 export default function Notas({ navigation }) {
-  const [tableHead, setTableHead] = useState(["Matéria", "Nota"]);
-  const [tableData, setTableData] = useState([
-    ["Calculo", 10],
-    ["Lógica Matematica", 10],
-    ["Fisica", 7],
-    ["Matemática Discreta", 10],
-    ["ICC", 10],
-    ["ATP", 10],
-    ["Metodologia Científica", 8.5],
-    ["Lab ATP", 9],
-    ["Média do Semestre 8.5"],
-  ]);
-  const {tema} = useContext(TemaContext);
 
   return (
     <>
       <NavBar titulo="Notas" navigation={navigation} />
       <Container>
-        <TextPeriodo>1 série - 1 periodo</TextPeriodo>
-        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
-        </Table>
-        <TextPeriodo>1 série - 2 periodo</TextPeriodo>
-        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
-        </Table>
-        <TextPeriodo>2 série - 1 periodo</TextPeriodo>
-        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
-        </Table>
-        <TextPeriodo>2 série - 2 periodo</TextPeriodo>
-        <Table borderStyle={{ borderWidth: 2, borderColor: COR_PRINCIPAL}}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-          <Rows data={tableData} textStyle={[styles.text, {color: tema? 'black': 'white'} ]} />
-        </Table>
+        <FlatList
+          contentContainerStyle={{flexGrow: 1}}
+          data={periodos}
+          renderItem={({item})=> <PeriodoNota {...item} />}
+          keyExtractor={({id})=> String(id)}
+        >
+        </FlatList>
+        
       </Container>
     </>
   );
@@ -86,8 +78,4 @@ const style = StyleSheet.create({
     paddingHorizontal: "20%",
   },
 });
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 0, backgroundColor: "#fff" },
-  head: { height: 40, backgroundColor: COR_PRINCIPAL },
-  text: { margin: 6, textAlign: "center", color: 'white'},
-});
+
