@@ -24,6 +24,7 @@ const TemaCalendarEscuro = {
 }
 export default function CalendarioEscolar({navigation}){
   const diaLetivo = "#a7e0a3"
+
   const {tema} = useContext(TemaContext)
 
   return(

@@ -1,5 +1,5 @@
 export const COR_PRINCIPAL = '#2196f3' //#2196F3
-export const COR_PRINCIPAL_ESCURA = '#122932' //#122932
+export const COR_PRINCIPAL_ESCURA = '#2196f3' //#122932
 export const CINZA = '#e5e5e5'
 export const CINZA_CLARO = '#E2EBEE'
 export const CINZA_ESCURO = '#ccc'

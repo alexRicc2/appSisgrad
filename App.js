@@ -1,12 +1,14 @@
 import React from 'react';
-import Rotas from "./src/Rotas";
 import { TemaProvider } from "./src/components/common/TemaContext";
-
+import RotasLogin from './src/RotasLogin';
+import { UsuarioProvider } from './src/components/common/UsuarioContext';
 export default function App() {
  
   return (
         <TemaProvider>
-        <Rotas/>
+        <UsuarioProvider>
+        <RotasLogin/>
+        </UsuarioProvider>
         </TemaProvider>  
   );
 }

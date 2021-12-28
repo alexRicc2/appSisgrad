@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
+import { UsuarioContext } from '../common/UsuarioContext';
 
 const Menu = styled.View`
   background-color: ${({theme}) => theme.principal};
@@ -14,15 +15,29 @@ const Menu = styled.View`
   height: 58px;
 `
 
-export default function NavBar({navigation , titulo}){
+export default function NavBar({navigation = null , titulo}){
+
+  const { setUser} = useContext(UsuarioContext)
   return(
     <Menu>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <Entypo name="menu" size={28} color="white" onPress={() => navigation.toggleDrawer()} style={{marginRight: 24}}/>
+        { navigation && 
+        <Entypo 
+          name="menu" 
+          size={28} 
+          style={{marginRight: 24}}
+          color="white" onPress={() => navigation.toggleDrawer()} 
+        />
+        }
+        
         <Text style={style.titulo}>{titulo}</Text>
       </View>
-        <MaterialIcons name="logout" size={28} color="white" />
-    </Menu>
+      { navigation &&
+        <MaterialIcons 
+          onPress={()=> setUser(null)}
+          name="logout" size={28} color="white" />
+      }
+      </Menu>
   )
 }
 
